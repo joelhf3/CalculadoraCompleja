@@ -53,13 +53,20 @@ public class Complex {
 		return complex;
 	}
 	
+	public Complex subtract(Complex c) {
+		Complex complex = new Complex();
+		complex.realProperty().bind(real.subtract(c.realProperty()));
+		complex.imaginaryProperty().bind(imaginary.subtract(c.imaginaryProperty()));
+		return complex;
+	}
+	
 	public static void main(String[] args) {
 		Complex a = new Complex(1, 2);
 		Complex b = new Complex(3, 4);
 		Complex c = a.add(b);
-		System.out.println(c);
-		a.setReal(10);
+		Complex d = a.subtract(b);
 		System.out.println(c);		
+		System.out.println(d);
 	}
 
 }
