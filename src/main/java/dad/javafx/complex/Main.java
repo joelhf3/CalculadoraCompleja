@@ -1,10 +1,10 @@
-package dad.javafx.template;
+package dad.javafx.complex;
 
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		Calculator.main(args);
 	}
 
 }
