@@ -29,13 +29,21 @@ public class Calculator extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
+		cb = new ComboBox<>();
 		tfReal = new TextField("0");
 		tfImaginary = new TextField("0");
 		tfReal2 = new TextField("0");
 		tfImaginary2 = new TextField("0");
-		
-		btn = new Button();
-		btn.setText("=");
+		tfRealResult = new TextField("0");
+		tfImaginaryResult = new TextField("0");
+		a = new Label("+");
+		a2 = new Label("+");
+		aResult = new Label("+");
+		i = new Label("i");
+		i2 = new Label("i");
+		iResult = new Label("i");
+		sp = new Separator();
+		btn = new Button("=");
 		
 		VBox vbLeft = new VBox();
 		vbLeft.setSpacing(5);
