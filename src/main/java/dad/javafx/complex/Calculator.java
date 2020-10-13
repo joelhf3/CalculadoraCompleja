@@ -30,6 +30,8 @@ public class Calculator extends Application {
 	public void start(Stage stage) throws Exception {
 		
 		cb = new ComboBox<String>();
+		cb.getItems().addAll("+", "-", "*", "/");
+		cb.getSelectionModel().selectFirst();
 		
 		tfReal = new TextField("0");
 		tfReal.setPrefColumnCount(5);
@@ -54,11 +56,13 @@ public class Calculator extends Application {
 		tfRealResult = new TextField("0");
 		tfRealResult.setPrefColumnCount(5);
 		tfRealResult.setMaxWidth(50);
+		tfRealResult.setDisable(true);
 		tfRealResult.setAlignment(Pos.CENTER);
 		
 		tfImaginaryResult = new TextField("0");
 		tfImaginaryResult.setPrefColumnCount(5);
 		tfImaginaryResult.setMaxWidth(50);
+		tfImaginaryResult.setDisable(true);
 		tfImaginaryResult.setAlignment(Pos.CENTER);
 		
 		a = new Label("+");
