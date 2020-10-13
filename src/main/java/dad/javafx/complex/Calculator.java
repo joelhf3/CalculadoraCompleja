@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 public class Calculator extends Application {
 
-	private ComboBox cb;
+	private ComboBox<String> cb;
 	private TextField tfReal;
 	private TextField tfImaginary;
 	private TextField tfReal2;
@@ -29,13 +29,38 @@ public class Calculator extends Application {
 	@Override
 	public void start(Stage stage) throws Exception {
 		
-		cb = new ComboBox<>();
+		cb = new ComboBox<String>();
+		
 		tfReal = new TextField("0");
+		tfReal.setPrefColumnCount(5);
+		tfReal.setMaxWidth(50);
+		tfReal.setAlignment(Pos.CENTER);
+		
 		tfImaginary = new TextField("0");
+		tfImaginary.setPrefColumnCount(5);
+		tfImaginary.setMaxWidth(50);
+		tfImaginary.setAlignment(Pos.CENTER);
+		
 		tfReal2 = new TextField("0");
+		tfReal2.setPrefColumnCount(5);
+		tfReal2.setMaxWidth(50);
+		tfReal2.setAlignment(Pos.CENTER);
+		
 		tfImaginary2 = new TextField("0");
+		tfImaginary2.setPrefColumnCount(5);
+		tfImaginary2.setMaxWidth(50);
+		tfImaginary2.setAlignment(Pos.CENTER);
+		
 		tfRealResult = new TextField("0");
+		tfRealResult.setPrefColumnCount(5);
+		tfRealResult.setMaxWidth(50);
+		tfRealResult.setAlignment(Pos.CENTER);
+		
 		tfImaginaryResult = new TextField("0");
+		tfImaginaryResult.setPrefColumnCount(5);
+		tfImaginaryResult.setMaxWidth(50);
+		tfImaginaryResult.setAlignment(Pos.CENTER);
+		
 		a = new Label("+");
 		a2 = new Label("+");
 		aResult = new Label("+");
@@ -45,6 +70,21 @@ public class Calculator extends Application {
 		sp = new Separator();
 		btn = new Button("=");
 		
+		HBox hbUp = new HBox();
+		hbUp.setSpacing(5);
+		hbUp.setAlignment(Pos.CENTER);
+		hbUp.getChildren().addAll(tfReal, a, tfImaginary, i);
+		
+		HBox hbCenter = new HBox();
+		hbCenter.setSpacing(5);
+		hbCenter.setAlignment(Pos.CENTER);
+		hbCenter.getChildren().addAll(tfReal2, a2, tfImaginary2, i2);
+		
+		HBox hbDown = new HBox();
+		hbDown.setSpacing(5);
+		hbDown.setAlignment(Pos.CENTER);
+		hbDown.getChildren().addAll(tfRealResult, aResult, tfImaginaryResult, iResult);
+		
 		VBox vbLeft = new VBox();
 		vbLeft.setSpacing(5);
 		vbLeft.setAlignment(Pos.CENTER);
@@ -53,7 +93,7 @@ public class Calculator extends Application {
 		VBox vbCenter = new VBox();
 		vbCenter.setSpacing(5);
 		vbCenter.setAlignment(Pos.CENTER);
-		vbCenter.getChildren().addAll(cb);
+		vbCenter.getChildren().addAll(hbUp, hbCenter, sp, hbDown);
 		
 		VBox vbRight = new VBox();
 		vbRight.setSpacing(5);
