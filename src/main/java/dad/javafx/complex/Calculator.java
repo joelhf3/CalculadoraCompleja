@@ -1,12 +1,15 @@
 package dad.javafx.complex;
 
 import javafx.application.Application;
+import javafx.beans.property.Property;
+import javafx.css.converter.StringConverter;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.converter.DoubleStringConverter;
 
 public class Calculator extends Application {
 
@@ -108,6 +111,17 @@ public class Calculator extends Application {
 		root.setSpacing(5);
 		root.setAlignment(Pos.CENTER);
 		root.getChildren().addAll(vbLeft, vbCenter, vbRight);
+		
+		Double real = Double.parseDouble(tfReal.getText());
+		Double imaginary = Double.parseDouble(tfImaginary.getText());
+		
+		Double real2 = Double.parseDouble(tfReal2.getText());
+		Double imaginary2 = Double.parseDouble(tfImaginary2.getText());
+		
+		Complex a = new Complex(real, imaginary);
+		Complex b = new Complex(real2, imaginary2);
+		
+		
 		
 		Scene scene = new Scene(root, 320, 200);		
 		stage.setScene(scene);
