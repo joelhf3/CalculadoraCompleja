@@ -27,8 +27,8 @@ public class Calculator extends Application {
 	private Label i2;
 	private Label iResult;
 	private Separator sp;
-	private Button btn;
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void start(Stage stage) throws Exception {
 		
@@ -75,7 +75,6 @@ public class Calculator extends Application {
 		i2 = new Label("i");
 		iResult = new Label("i");
 		sp = new Separator();
-		btn = new Button("=");
 		
 		HBox hbUp = new HBox();
 		hbUp.setSpacing(5);
@@ -102,15 +101,10 @@ public class Calculator extends Application {
 		vbCenter.setAlignment(Pos.CENTER);
 		vbCenter.getChildren().addAll(hbUp, hbCenter, sp, hbDown);
 		
-		VBox vbRight = new VBox();
-		vbRight.setSpacing(5);
-		vbRight.setAlignment(Pos.CENTER);
-		vbRight.getChildren().addAll(btn);
-		
 		HBox root = new HBox();
 		root.setSpacing(5);
 		root.setAlignment(Pos.CENTER);
-		root.getChildren().addAll(vbLeft, vbCenter, vbRight);
+		root.getChildren().addAll(vbLeft, vbCenter);
 		
 		Double real = Double.parseDouble(tfReal.getText());
 		Double imaginary = Double.parseDouble(tfImaginary.getText());
