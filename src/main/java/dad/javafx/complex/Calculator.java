@@ -29,7 +29,6 @@ public class Calculator extends Application {
 	private Label iResult;
 	private Separator sp;
 	
-	@SuppressWarnings("unchecked")
 	@Override
 	public void start(Stage stage) throws Exception {
 		
@@ -107,21 +106,20 @@ public class Calculator extends Application {
 		root.setAlignment(Pos.CENTER);
 		root.getChildren().addAll(vbLeft, vbCenter);
 		
-		Double real = Double.parseDouble(tfReal.getText());
-		Double imaginary = Double.parseDouble(tfImaginary.getText());
+		StringConverter<Number> sc = new NumberStringConverter();
 		
-		Double real2 = Double.parseDouble(tfReal2.getText());
-		Double imaginary2 = Double.parseDouble(tfImaginary2.getText());
+		Complex a = new Complex();
+		Complex b = new Complex();
 		
-		Complex a = new Complex(real, imaginary);
-		Complex b = new Complex(real2, imaginary2);
+		tfReal.textProperty().bindBidirectional(a.realProperty(), sc);
+		tfImaginary.textProperty().bindBidirectional(a.imaginaryProperty(), sc);
+		tfReal2.textProperty().bindBidirectional(b.realProperty(), sc);
+		tfImaginary2.textProperty().bindBidirectional(b.imaginaryProperty(), sc);
 		
 		Complex c = a.add(b);
 		
-		StringConverter<Number> sc = new NumberStringConverter();
-		
-		tfRealResult.textProperty().bindBidirectional(c.realProperty(), sc);
-		tfImaginaryResult.textProperty().bindBidirectional(c.imaginaryProperty(), sc);
+		tfRealResult.textProperty().bind(c.realProperty().asString());
+		tfImaginaryResult.textProperty().bind(c.imaginaryProperty().asString());
 		
 		Scene scene = new Scene(root, 320, 200);		
 		stage.setScene(scene);
