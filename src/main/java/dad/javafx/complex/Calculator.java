@@ -2,14 +2,15 @@ package dad.javafx.complex;
 
 import javafx.application.Application;
 import javafx.beans.property.Property;
-import javafx.css.converter.StringConverter;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 import javafx.util.converter.DoubleStringConverter;
+import javafx.util.converter.NumberStringConverter;
 
 public class Calculator extends Application {
 
@@ -115,7 +116,12 @@ public class Calculator extends Application {
 		Complex a = new Complex(real, imaginary);
 		Complex b = new Complex(real2, imaginary2);
 		
+		Complex c = a.add(b);
 		
+		StringConverter<Number> sc = new NumberStringConverter();
+		
+		tfRealResult.textProperty().bindBidirectional(c.realProperty(), sc);
+		tfImaginaryResult.textProperty().bindBidirectional(c.imaginaryProperty(), sc);
 		
 		Scene scene = new Scene(root, 320, 200);		
 		stage.setScene(scene);
